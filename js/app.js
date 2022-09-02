@@ -24,13 +24,17 @@ const displayNews = (newses) => {
 };
 
 const loadNewsDetails = (id) => {
+  console.log("id vabi", id);
+
   const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
 
   fetch(url)
     .then((res) => res.json())
-    .then((data) => console.log("Ononta bro", data.data));
+    .then((data) => newsDetailsContainer(data.data));
+};
 
-  console.log("Borsha is on fire", url);
+const newsDetailsContainer = (newsDetalis) => {
+  newsDetalis.forEach((element) => console.log("newsDetails", element));
 };
 
 // const displayCountries = (countries) => {
