@@ -15,7 +15,7 @@ const displayNews = (newses) => {
     const newsParagraph = document.createElement("div");
 
     newsParagraph.innerHTML = `
-     <p onClick='loadNewsDetails()'>  ${news.category_name} </p>
+     <p onClick='loadNewsDetails(${news.category_id})'>  ${news.category_name} ${news.category_id}</p>
     
     `;
 
@@ -23,8 +23,14 @@ const displayNews = (newses) => {
   });
 };
 
-const loadNewsDetails = () => {
-  console.log("Borsha is on fire");
+const loadNewsDetails = (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => console.log("Ononta bro", data.data));
+
+  console.log("Borsha is on fire", url);
 };
 
 // const displayCountries = (countries) => {
